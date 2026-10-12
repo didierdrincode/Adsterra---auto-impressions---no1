@@ -52,9 +52,9 @@ info "Checking dependencies..."
 command -v python3 >/dev/null 2>&1 || fail "python3 not found on PATH"
 PY=python3
 
-if ! "$PY" -c "import playwright" >/dev/null 2>&1; then
-    info "Installing playwright..."
-    pip install playwright
+if ! "$PY" -c "import httpx" >/dev/null 2>&1; then
+    info "Installing httpx and playwright..."
+    "$PY" -m pip install --upgrade pip httpx playwright
 fi
 
 if ! "$PY" -c "from playwright.sync_api import sync_playwright; sync_playwright" >/dev/null 2>&1; then
